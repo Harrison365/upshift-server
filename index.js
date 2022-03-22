@@ -13,6 +13,12 @@ const io = new Server(server, {
 
 app.use(cors());
 
+io.on("connection", (socket) => {
+    console.log(`user connected ${socket.id}`);
+    socket.on("disconnect", () => {
+      console.log(`user disconnected ${socket.id}`);
+    });
+  });
 
 server.listen(4000, () => {
     console.log("listening on *:4000");
