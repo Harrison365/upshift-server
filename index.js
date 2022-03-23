@@ -20,7 +20,7 @@ io.on("connection", (socket) => {
     console.log(`User with ID:${socket.id} joined room ${room}`);
   });
   socket.on("chat message", (content) => {
-    io.emit("chat message", content);
+    io.to(content.roomId).emit("chat message", content);
   });
   socket.on("disconnect", () => {
     console.log(`user disconnected ${socket.id}`);
