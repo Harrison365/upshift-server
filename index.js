@@ -6,7 +6,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:19006",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -27,6 +27,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(4000, () => {
-  console.log("listening on *:4000");
+server.listen(3000, () => {
+  console.log("listening on *:3000");
 });
